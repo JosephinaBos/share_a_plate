@@ -5,12 +5,8 @@ class User < ApplicationRecord
   has_many :received_reviews, class_name: :review, foreign_key: :reviewer_id
   has_many :written_reviews, class_name: :review, foreign_key: :reviewee_id
 
-  validates :email_address, presence: true
+  validates :email_address, :password, :first_name, :last_name, :bank_account, presence: true
   validates :email_address, uniqueness: true
-  validates :password, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :bank_account, presence: true
 
   # roles. to state if user is guest / host and use that for reviews
 
