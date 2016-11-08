@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 # Booking connects event to guest. The only thing the user can edit is the status
 
   before_action :booking_params, only: [:create, :update]
-  before_action :find_booking, only: [:create, :update, :destroy]
+  before_action :find_booking
   before_action :find_user, only: [:create]
   before_action :find_event, only: [:create]
 
@@ -15,11 +15,11 @@ class BookingsController < ApplicationController
     @booking = Booking.create(booking_params)
     @booking.user = @user
     @booking.event = @event
-    if booking.save
-      redirect_to user_path(@user)
-    else
-      raise 'Booking error'
-    end
+    # if booking.save
+    #   redirect_to user_path(@user)
+    # else
+    #   raise 'Booking error'
+    # end
   end
 
   def edit
@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    redirect_to bookings_path(@event)
+    # redirect_to bookings_path(@event)
 
     #only status can be updated by host
     #pending - accepted - rejected
@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
     #   flash 'Are you sure you want to cancel?'
     # end
 
-    redirect_to user_path(@user)
+    # redirect_to user_path(@user)
   end
 
   private
