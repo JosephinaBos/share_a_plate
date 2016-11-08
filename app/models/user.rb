@@ -1,12 +1,17 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   has_many :bookings, through: :events
   has_many :events
   has_many :bookings
   has_many :received_reviews, class_name: :review, foreign_key: :reviewer_id
   has_many :written_reviews, class_name: :review, foreign_key: :reviewee_id
 
-  validates :email_address, :password, :first_name, :last_name, :bank_account, presence: true
-  validates :email_address, uniqueness: true
+  # validates :email_address, :password, :first_name, :last_name, :bank_account, presence: true
+  # validates :email_address, uniqueness: true
 
   # roles. to state if user is guest / host and use that for reviews
 
