@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+
   get 'bookings/new'
   get 'bookings/create'
   get 'bookings/edit'
@@ -11,5 +14,4 @@ Rails.application.routes.draw do
   get 'reviews/destroy'
 
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
