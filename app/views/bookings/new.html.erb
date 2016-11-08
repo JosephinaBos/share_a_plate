@@ -1,2 +1,16 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h2>Book Event</h2>
+
+<h3><% event.name %></h3>
+</br>
+<p><% event.description %></p>
+</br>
+<p><% event.price %></p>
+</br>
+<!-- <p>Spots left: <#% interpolate method that shows how many spots are left %></p> -->
+<!-- <#%= link_to user.name(host), user_path(@user) %> display host as a link, maybe as a card? clicking on host name will route to host profile-->
+
+<%= form_for(@booking) do |f| %>
+  <%= f.submit %>
+<% end %>
+
+<!-- connect booking to guest_dashboard and event_page so that both the guest and the host can see the booking -->
