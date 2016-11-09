@@ -1,5 +1,7 @@
-<h2><% "Book for: #{event.name}" %></h2> <!-- event title -->
-<!-- <h4><#%= link_to "By: #{user.first_name + user.last_name}", some_path %></h4> display guest as a link, maybe as a card? clicking on guest name will route to guest -->
+<h2><% "Book for: #{@event.name}" %></h2> <!-- event title -->
+<h4><%= "By: #{user.first_name + user.last_name}" %></h4>
+
+<!-- display guest as a link, maybe as a card? clicking on guest name will route to guest -->
 
 <!-- <#%= link_to 'Accept booking', some_path, html_options = {class: "btn btn-primary "} %> -->
 <!-- <#%= link_to 'Reject booking', some_path, html_options = {class: "btn btn-danger "} %> -->

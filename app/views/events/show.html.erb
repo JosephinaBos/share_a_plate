@@ -10,6 +10,12 @@
   <p><%= @event.event_address %></p>
 </div>
 
+<div class="btn-book">
+  <div class="btn btn-primary">
+    <%= link_to "Book Event", new_event_booking_path(@event) %>
+  </div>
+</div>
+
 <div class="button-edit">
   <div class="btn btn-warning">
     <%= link_to 'Edit Event', edit_event_path(@event) %>
