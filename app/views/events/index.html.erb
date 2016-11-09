@@ -1,24 +1,22 @@
-
-<div class="editableContainer">
-<div class="grid grid--highlight">
-  <div class="grid__column--1-1">
-    <div class="gridpart">
-
 <h2>Events</h2>
 </br>
 <h4>Most popular:</h4>
 
+<div class="events">
+  <ul>
+    <% @events.each do |event| %>
+    <li>
+      <%= link_to event.name, event_path(event)%>
+      <%= "Hosted by: #{event.user.first_name.capitalize} #{event.user.last_name.capitalize}" %> <!-- link it to host profile later -->
+      <% end %>
+    </li>
+  </ul>
 </div>
-  </div>
-    </div>
-      </div>
 
-<ul>
-  <% @events.each do |event| %>
-  <li>
-    <%= link_to event.name, event_path(event)%>
-    <%= "Hosted by: #{event.user.first_name.capitalize} #{event.user.last_name.capitalize}" %> <!-- link it to host profile later -->
-  <% end %>
-  </li>
-</ul>
+<div class="btn-newevent">
+  <div class="btn btn-primary">
+    <%= link_to "New Event", new_event_path(@event) %>
+  </div>
+</div>
+
 
