@@ -1,2 +1,11 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h2>Events</h2>
+</br>
+<h4>Most popular:</h3>
+<ul>
+  <% @events.each do |event| %>
+  <li>
+    <%= link_to event.name, events_path(event)%>
+    <%= "Hosted by: #{event.user.first_name}" %> <!-- link it to host profile later -->
+  <% end %>
+  </li>
+</ul>
