@@ -2,22 +2,23 @@ class BookingsController < ApplicationController
 
 # Booking connects event to guest. The only thing the user can edit is the status
 
-  before_action :booking_params, only: [:create, :update]
-  before_action :find_booking
-  before_action :find_user, only: [:create]
-  before_action :find_event, only: [:create]
+  #before_action :booking_params, only: [:create, :update]
+  #before_action :find_booking, except: [:new]
+  before_action :find_user
+  before_action :find_event
 
   def new
     @booking = Booking.new
+    #@oooking_with_id = Booking.pluck[:id]
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(params[:booking])
     @booking.user = @user
     @booking.event = @event
-    @booking.save
+    @booking.save!
 
-    if booking.save
+    if @booking.save
       redirect_to event_path(@event)
     else
       raise 'Booking error'
@@ -28,16 +29,16 @@ class BookingsController < ApplicationController
   def edit
   end
 
-  def update
-    @booking.update(booking_params)
-    # redirect_to bookings_path(@event)
+  # def update
+  #   @booking.update(booking_params)
+  #   # redirect_to bookings_path(@event)
 
-    #only status can be updated by host
-    #pending - accepted - rejected
-    #in form_for in events/.html.erb host can pick one
-    #???????????????
-    #or, is it all on event page???
-  end
+  #   #only status can be updated by host
+  #   #pending - accepted - rejected
+  #   #in form_for in events/.html.erb host can pick one
+  #   #???????????????
+  #   #or, is it all on event page???
+  # end
 
   def destroy
 
@@ -61,16 +62,16 @@ class BookingsController < ApplicationController
 
   private
 
-  def booking_params
-    params.require(:booking).permit(:status)
-  end
+  # def booking_params
+  #   params.require(:booking).permit(:status)
+  # end
 
   def find_booking
     @booking = Booking.find(params[:id])
   end
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user)
   end
 
   def find_event
