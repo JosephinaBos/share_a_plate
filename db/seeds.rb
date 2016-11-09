@@ -11,4 +11,3 @@ User.create(password: "secrettt", first_name: "driss", last_name: "france", addr
 
 Event.create(name: "Refugeat", description: "Dinner for refugees", price: 4, max_guests: 4, event_address: "Somestreet 12", theme: "refugees", user_id: 1)
 Event.create(name: "Fuck Trump", description: "Throw food at Trumo", price: 3, max_guests: 1000, event_address: "White House", theme: "refugees", user_id: 1 )
-
