@@ -1,2 +1,11 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>Add a new eating event</h1>
+
+<%= simple_form_for(@event) do |f| %>
+<%= f.input :name  %>
+<%= f.input :description %>
+<%= f.input :price %>
+<%= f.input :max_guests %>
+<%= f.input :event_address %>
+<%= f.input :user_id %>
+<%= f.submit "Create this event!" %>
+<% end %>
