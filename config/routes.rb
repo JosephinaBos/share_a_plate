@@ -1,29 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
+  resources :events do
+    resources :bookings, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   devise_for :users
 
-  get 'bookings/new'
-  get 'bookings/create'
-  get 'bookings/edit'
-  get 'bookings/update'
-
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/edit'
-  get 'reviews/update'
-  get 'reviews/destroy'
+  resources :reviews, only: [:new, :create, :edit, :update, :destroy]
 
   root to: 'pages#home'
 end
