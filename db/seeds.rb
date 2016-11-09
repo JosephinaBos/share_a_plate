@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(password: "secret", first_name: "joos", last_name: "ephina", address: "somewhere", bank_account: "over the rainbow", bio: "lekker eten lekker")
-User.create(password: "secrettt", first_name: "driss", last_name: "france", address: "paris", bank_account: "yes", bio: "tres francais")
+User.destroy_all
+Event.destroy_all
+
+User.create(password: "secret", first_name: "joos", last_name: "ephina", address: "somewhere", bank_account: "over the rainbow", bio: "lekker eten lekker", email: "hoi@hoi.hoi")
+User.create(password: "secrettt", first_name: "driss", last_name: "france", address: "paris", bank_account: "yes", bio: "tres francais", email: "Ja@ja.nl")
 
 Event.create(name: "Refugeat", description: "Dinner for refugees", price: 4, max_guests: 4, event_address: "Somestreet 12", theme: "refugees", user_id: 1)
 Event.create(name: "Fuck Trump", description: "Throw food at Trumo", price: 3, max_guests: 1000, event_address: "White House", theme: "refugees", user_id: 1 )
