@@ -12,14 +12,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.create(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.user = @user
     @booking.event = @event
-    # if booking.save
-    #   redirect_to user_path(@user)
-    # else
-    #   raise 'Booking error'
-    # end
+    @booking.save
+
+    if booking.save
+      redirect_to event_path(@event)
+    else
+      raise 'Booking error'
+    end
+
   end
 
   def edit
@@ -51,6 +54,9 @@ class BookingsController < ApplicationController
     # end
 
     # redirect_to user_path(@user)
+
+    @booking.destroy
+    redirect_to event_path(@event)
   end
 
   private
