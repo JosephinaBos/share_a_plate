@@ -5,7 +5,7 @@
   <% @events.each do |event| %>
   <li>
     <%= link_to event.name, events_path(event)%>
-    <%= "Hosted by: #{event.user.first_name}" %> <!-- link it to host profile later -->
+    <%= "Hosted by: #{event.user.first_name.capitalize} #{event.user.last_name.capitalize}" %> <!-- link it to host profile later -->
   <% end %>
   </li>
 </ul>
